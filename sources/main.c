@@ -6,11 +6,11 @@
 /*   By: agondard <agondard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 10:42:33 by agondard          #+#    #+#             */
-/*   Updated: 2021/12/22 17:49:57 by agondard         ###   ########.fr       */
+/*   Updated: 2021/12/22 18:51:17 by agondard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int main(void)
 {

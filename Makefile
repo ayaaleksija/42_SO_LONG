@@ -6,7 +6,7 @@
 #    By: agondard <agondard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 11:20:12 by agondard          #+#    #+#              #
-#    Updated: 2021/12/22 17:50:39 by agondard         ###   ########.fr        #
+#    Updated: 2021/12/22 19:04:10 by agondard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,24 +22,27 @@ IFLAGS:= -I ./includes
 LFLAGS:= -L $(LIBFT_DIR) -lft
 
 #/* ---------- SOURCES ---------- */
-SRCS =	
+SRCS_DIR = ./sources/
+SRCS = 3_design/render.c \
+	4_action/escape.c \
+	4_action/move.c \
 
 OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
 
 #/* ---------- INCLUSION DES DIFFERENTES BIBIOTHEQUES ---------- */
 
 #/* ----- INCLUSION MINILIBX-LINUX ----- */
-MLX_DIR = ./mlx_linux/
+MLX_DIR = ./library/mlx_linux
 MLX_MAKE = Makefile
 MLX_PATH = ${MLX_DIR}/libmlx.a
 
 #/* ----- INCLUSION LIBFT ----- */
-LIBFT_DIR = ./libft/
+LIBFT_DIR = ./library/libft
 LIBFT_MAKE = Makefile
 LIBFT_PATH = ${LIBFT_DIR}/libft.a
 
 #/* ----- INCLUSION GNL ----- */
-GNL_DIR = ./get_next_line/
+GNL_DIR = ./library/get_next_line/
 GNL = 	get_next_line.c \
 		get_next_line_utils.c \
 GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
