@@ -1,39 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agondard <agondard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 11:02:43 by agondard          #+#    #+#             */
-/*   Updated: 2021/12/22 17:49:53 by agondard         ###   ########.fr       */
+/*   Created: 2021/12/22 17:34:32 by agondard          #+#    #+#             */
+/*   Updated: 2021/12/22 17:34:33 by agondard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
-
-# define SUCCESS 1
-# define FAILURE 0
-# define ERROR -1
-
-# define WINDOW_WIDTH 1024
-# define WINDOW_HEIGHT 600
-
-#define RED_PIXEL 0xFF0000
-
-// ajout des bibliotheques
-#include <stdlib.h>
-#include <unistd.h>
-#include "mlx_linux/mlx.h"
-#include <X11/X.h>
-#include <X11/keysym.h>
-
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*window;
-}	t_data;
-
-
-#endif

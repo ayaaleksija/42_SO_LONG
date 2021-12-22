@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   escape.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agondard <agondard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/22 11:02:43 by agondard          #+#    #+#             */
-/*   Updated: 2021/12/22 17:49:53 by agondard         ###   ########.fr       */
+/*   Created: 2021/12/22 17:34:35 by agondard          #+#    #+#             */
+/*   Updated: 2021/12/22 17:43:53 by agondard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "../so_long.h"
 
-# define SUCCESS 1
-# define FAILURE 0
-# define ERROR -1
-
-# define WINDOW_WIDTH 1024
-# define WINDOW_HEIGHT 600
-
-#define RED_PIXEL 0xFF0000
-
-// ajout des bibliotheques
-#include <stdlib.h>
-#include <unistd.h>
-#include "mlx_linux/mlx.h"
-#include <X11/X.h>
-#include <X11/keysym.h>
-
-typedef struct s_data
+int	press_escape(int keysym, t_data *data)
 {
-	void	*mlx_ptr;
-	void	*window;
-}	t_data;
-
-
-#endif
+	if (keysym == XK_Escape)
+	{
+		mlx_destroy_window(data->mlx_ptr, data->window);
+		data->window = NULL;
+	}
+	return (0);
+}

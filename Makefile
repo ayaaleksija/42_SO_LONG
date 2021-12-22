@@ -6,39 +6,39 @@
 #    By: agondard <agondard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 11:20:12 by agondard          #+#    #+#              #
-#    Updated: 2021/12/22 14:02:44 by agondard         ###   ########.fr        #
+#    Updated: 2021/12/22 17:50:39 by agondard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-/* ----- INFORMATIONS GENERALES ----- */
+#/* ----- INFORMATIONS GENERALES ----- */
 NAME = so_long
 RM = rm -rf
 
-/* ----- ELEMENTS DE COMPILATION ----- */
+#/* ----- ELEMENTS DE COMPILATION ----- */
 CC = clang
 CFLAGS = -Wall -Werror -Wextra -g # -MMD
 MFLAGS = -ldl -lmlx -L${MLX_DIR} -lm -lXext -lX11 -Imlx $(MLX_PATH)
 IFLAGS:= -I ./includes
 LFLAGS:= -L $(LIBFT_DIR) -lft
 
-/* ---------- SOURCES ---------- */
-SRCS =
+#/* ---------- SOURCES ---------- */
+SRCS =	
 
 OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
 
-/* ---------- INCLUSION DES DIFFERENTES BIBIOTHEQUES ---------- */
+#/* ---------- INCLUSION DES DIFFERENTES BIBIOTHEQUES ---------- */
 
-/* ----- INCLUSION MINILIBX-LINUX ----- */
+#/* ----- INCLUSION MINILIBX-LINUX ----- */
 MLX_DIR = ./mlx_linux/
 MLX_MAKE = Makefile
 MLX_PATH = ${MLX_DIR}/libmlx.a
 
-/* ----- INCLUSION LIBFT ----- */
+#/* ----- INCLUSION LIBFT ----- */
 LIBFT_DIR = ./libft/
 LIBFT_MAKE = Makefile
 LIBFT_PATH = ${LIBFT_DIR}/libft.a
 
-/* ----- INCLUSION GNL ----- */
+#/* ----- INCLUSION GNL ----- */
 GNL_DIR = ./get_next_line/
 GNL = 	get_next_line.c \
 		get_next_line_utils.c \
