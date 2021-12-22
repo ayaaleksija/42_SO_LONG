@@ -6,33 +6,72 @@
 #    By: agondard <agondard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 11:20:12 by agondard          #+#    #+#              #
-#    Updated: 2021/12/22 11:25:28 by agondard         ###   ########.fr        #
+#    Updated: 2021/12/22 14:02:44 by agondard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+/* ----- INFORMATIONS GENERALES ----- */
 NAME = so_long
-
-CC = clang
-CFLAGS = -Wall -Werror -Wextra
-AR = ar rc
 RM = rm -rf
 
-SRC =
+/* ----- ELEMENTS DE COMPILATION ----- */
+CC = clang
+CFLAGS = -Wall -Werror -Wextra -g # -MMD
+MFLAGS = -ldl -lmlx -L${MLX_DIR} -lm -lXext -lX11 -Imlx $(MLX_PATH)
+IFLAGS:= -I ./includes
+LFLAGS:= -L $(LIBFT_DIR) -lft
 
-OBJ = $(SRC:.c=.o)
+/* ---------- SOURCES ---------- */
+SRCS =
 
-$(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
+OBJS = ${addprefix ${SRCS_DIR}, ${SRCS:.c=.o}}
 
+/* ---------- INCLUSION DES DIFFERENTES BIBIOTHEQUES ---------- */
 
-all : $(NAME)
+/* ----- INCLUSION MINILIBX-LINUX ----- */
+MLX_DIR = ./mlx_linux/
+MLX_MAKE = Makefile
+MLX_PATH = ${MLX_DIR}/libmlx.a
 
-clean :
-	$(RM) $(OBJ)
+/* ----- INCLUSION LIBFT ----- */
+LIBFT_DIR = ./libft/
+LIBFT_MAKE = Makefile
+LIBFT_PATH = ${LIBFT_DIR}/libft.a
 
-fclean : clean
-	$(RM) $(NAME)
+/* ----- INCLUSION GNL ----- */
+GNL_DIR = ./get_next_line/
+GNL = 	get_next_line.c \
+		get_next_line_utils.c \
+GNL_OBJS = ${addprefix ${GNL_DIR}, ${GNL:.c=.o}}
 
-re : fclean all
+# /* ~~~~~~~ Colors ~~~~~~~ */
+BLACK:="\033[1;30m"
+RED:="\033[1;31m"
+GREEN:="\033[1;32m"
+PURPLE:="\033[1;35m"
+CYAN:="\033[1;36m"
+WHITE:="\033[1;37m"
+EOC:="\033[0;0m"
+
+all:	${NAME}
+
+$(NAME): $(OBJS) $(GNL_OBJS)
+	@make -C ${MLX_DIR}
+	@cd $(LIBFT_DIR) && $(MAKE)
+	@echo $(CYAN) " - Compiling $@" $(RED)
+	@$(CC) $(CFLAGS) $(OBJS) $(GNL_OBJS) $(SRCS_DIR)main.c $(IFLAGS) $(LFLAGS) -o $(NAME) $(MFLAGS)
+	@echo $(GREEN) "[OK COMPILED]" $(EOC)
+
+clean:
+		@echo $(PURPLE) "[🧹Cleaning...🧹]" $(EOC)
+		@${RM} ${OBJS}
+		@${RM} -r ${OBJ_DIR}
+		@make -C ${LIBFT_DIR} -f ${LIBFT_MAKE} clean
+
+fclean: clean
+		@echo $(PURPLE) "[🧹FCleaning...🧹]" $(EOC)
+		@${RM} ${OBJS} ${NAME}
+
+re: 	fclean all
 
 .PHONY: all clean fclean re
