@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agondard <agondard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/23 16:47:22 by agondard          #+#    #+#             */
-/*   Updated: 2021/12/23 20:18:00 by agondard         ###   ########.fr       */
+/*   Created: 2021/12/23 17:28:59 by agondard          #+#    #+#             */
+/*   Updated: 2021/12/23 20:15:59 by agondard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
-#include <stdio.h>
+#include "../../include/so_long.h"
 
 int	line(char *name)
 {
@@ -27,21 +26,11 @@ int	line(char *name)
 	{
 		line = get_next_line(fd);
 		while (line != NULL)
-		{
 			i++;
+			free(line);
 			line = get_next_line(fd);
 		}
 		close(fd);
 	}
 	return (i);
-}
-
-int	main(void)
-{
-	int		fd;
-
-	fd = open("../map/map_sujet.ber", O_RDONLY);
-	printf("%d\n", line(fd));
-	close (fd);
-	return (0);
 }

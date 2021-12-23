@@ -6,7 +6,7 @@
 /*   By: agondard <agondard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 11:02:43 by agondard          #+#    #+#             */
-/*   Updated: 2021/12/23 15:50:30 by agondard         ###   ########.fr       */
+/*   Updated: 2021/12/23 17:43:09 by agondard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../library/libft/libft.h"
+#include "../library/get_next_line/get_next_line.h"
 #include "../library/mlx_linux/mlx.h"
 #include <X11/X.h>
 #include <X11/keysym.h>
@@ -36,6 +37,7 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*window;
 }	t_data;
+
 
 typedef struct s_rect
 {
